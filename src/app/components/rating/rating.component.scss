@@ -1,0 +1,16 @@
+/**
+ * Created by Alex Poh. on 27/07/20.
+ * Copyright © 2020 TimeMarket Ltd. All rights reserved.
+ */
+
+.star-container{
+    width: 100px;
+}
+
+.star-icon{
+    width:13px;
+    height: 13px;
+    ::ng-deep svg path {
+        fill: rgba(220, 24, 0, 0.8);
+    }
+}

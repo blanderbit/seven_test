@@ -1,0 +1,79 @@
+<div *ngIf="profile" class="d-flex content-container preview position-relative">
+  <div class="avatar__container">
+    <div class="avatar position-relative d-flex">
+      <div class="avatar__image position-relative" style="margin: 25px 0">
+        <div class="flags">
+          <div
+            class="flags-box"
+            [ngStyle]="{ transform: flagDegs }"
+          >
+            <div class="flags-innerbox">
+              <div
+                class="flags-item"
+                *ngFor="let item of profile?.languages; index as i"
+                [ngStyle]="{ transform: flagDegItem(i) }"
+              >
+                <img
+                  class="flags-img"
+                  [ngStyle]="{
+                    transform: imgDeg(i)
+                  }"
+                  src="{{ 'assets/images/svg/' + item + '.svg' }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="avatar__image-link"
+          *ngIf="profile.profilePicture; else defaultIcon"
+          [src]="profile?.profilePicture"
+        />
+        <div
+          class="avatar__edit-button position-absolute"
+          *ngIf="isOwnProfile"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon svgIcon="test-edit-pen"></mat-icon>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+  <mat-icon class="edit position-absolute" svgIcon="test-edit-pen-info">
+  </mat-icon>
+  <div class="heading">
+    <div class="heading__user-info">
+      <span>{{ fullName }}</span>
+      <mat-icon class="position-relative" svgIcon="test-verified-user">
+      </mat-icon>
+    </div>
+    <div class="d-flex align-items-baseline">
+      <app-rating [score]="profile.reviews.rating"></app-rating>
+      <div class="heading__reviews position-relative">
+        {{ profile.reviews.count }} Reviews
+      </div>
+    </div>
+    <div class="heading__user-data">
+      {{ profile.aboutMe }}
+    </div>
+    <div class="heading__location">
+      <span>
+        <mat-icon class="position-relative" svgIcon="test-location"> </mat-icon>
+        {{ profile.city }}, {{ profile.country }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultIcon>
+  <mat-icon class="avatar__image-link" svgIcon="test-profile-image"> </mat-icon>
+</ng-template>

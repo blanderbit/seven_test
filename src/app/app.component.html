@@ -1,0 +1,8 @@
+<div class="content d-flex flex-column align-items-center">
+  <ng-container *ngFor="let item of profiles">
+    <app-profile-preview
+            [profile]="item"
+            [isOwnProfile]="item.isOwnProfile"
+    ></app-profile-preview>
+  </ng-container>
+</div>

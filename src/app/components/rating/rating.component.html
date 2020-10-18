@@ -1,0 +1,7 @@
+<div class="d-flex star-container justify-content-between">
+    <div *ngFor="let _ of stars; index as i">
+        <span>
+            <mat-icon class="star-icon" [svgIcon]="starIcon(i)"></mat-icon>
+        </span>
+    </div>
+</div>
